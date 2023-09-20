@@ -1,0 +1,35 @@
+<h1>Sign Up</h1>
+<form [formGroup]="formauth" (ngsubmit)="onsubmit()">
+    <div class="field">
+        <label class="label">Username
+            <input type="text" formControlName="username" class="input"
+                [ngClass]="{'is-danger': this.formauth.controls.username.errors && this.formauth.controls.username.dirty&&this.formauth.controls.username.touched}">
+        </label>
+        <ng-container
+            *ngIf="this.formauth.controls.username.errors && this.formauth.controls.username.dirty&&this.formauth.controls.username.touched">
+            <div *ngIf="formauth.controls.username.errors" class="help is-danger">
+                {{formauth.controls.username.errors.minlength|json}}
+            </div>
+        </ng-container>
+        <label class="label">Password
+            <input type="text" formControlName="password" class="input" [ngClass]="{'is-danger': this.formauth.controls.password.errors && this.formauth.controls.password.dirty&&this.formauth.controls.password.touched}">
+        </label>
+        <ng-container *ngIf="this.formauth.controls.password.errors && this.formauth.controls.password.dirty&&this.formauth.controls.password.touched">
+            <div *ngIf="formauth.controls.password.errors" class="help is-danger">
+                {{formauth.controls.password.errors.minlength|json}}
+            </div>
+        </ng-container>
+        <label class="label">Confirm Password
+            <input type="password" formControlName="passwordconfirmation" class="input"
+                [ngClass]="{'is-danger': this.formauth.controls.passwordconfirmation.errors && this.formauth.controls.passwordconfirmation.dirty&&this.formauth.controls.passwordconfirmation.touched}">
+        </label>
+        <ng-container *ngIf="this.formauth.controls.passwordconfirmation.errors && this.formauth.controls.passwordconfirmation.dirty&&this.formauth.controls.passwordconfirmation.touched">
+            <div *ngIf="formauth.controls.passwordconfirmation.errors" class="help is-danger">
+                {{formauth.controls.passwordconfirmation.errors.minlength|json}}
+            </div>
+        </ng-container>
+        <div class="help is-danger" *ngIf="formauth.errors"> PASSWORD NOT MATCHED
+        </div>
+        <button class="button is-primary" type="submit">Sign Up</button>
+    </div>
+</form>
